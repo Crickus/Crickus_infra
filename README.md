@@ -1,2 +1,2 @@
-# express42-test_infra
-express42-test Infra repository
+# Crickus_infra
+Crickus Infra repository cloned from Otus
