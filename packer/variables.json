@@ -1,10 +1,11 @@
 {
             "project_id": "infra-333609",
             "source_image_family": "ubuntu-1804-lts",
+            "image_family": "reddit-base",
             "machine_type": "f1-micro",
             "disk_size": "20",
             "disk_type": "pd-standard",
             "image_description": "Packer test options",
             "network": "default",
-            "tags":  ["puma"]
+            "tags": "puma"
 }
