@@ -5,3 +5,4 @@ output "app_external_ip2" {
 # output "Global Forwarding Rule IP" {
 #   value = "${google_compute_forwarding_rule.lb_firewall.ip_address}"
 # }
+
