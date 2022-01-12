@@ -7,4 +7,3 @@ before_install:
 
 notifications:
   slack: devops-ql47982:qy86y0FChszRoHmADRvKQMUr
-
