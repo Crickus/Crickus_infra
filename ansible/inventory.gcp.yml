@@ -1,0 +1,8 @@
+plugin: gcp_compute
+projects:
+  - infra-333609
+zones:
+  - "europe-west1-b"
+filters: []
+auth_kind: serviceaccount
+service_account_file: "~/gcpkeys/appuser-private.json"
