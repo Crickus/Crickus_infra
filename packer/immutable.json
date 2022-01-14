@@ -1,0 +1,63 @@
+{
+    "variables": {
+            "project_id": null,
+            "source_image_family": null,
+            "image_family": null,
+            "machine_type": "f1-micro",
+            "disk_size": "20",
+            "disk_type": "pd-standard",
+            "image_description": "Packer test options",
+            "network": "default",
+            "tags":  "puma"
+    },
+    "builders": [
+        {
+            "type": "googlecompute",
+            "project_id": "{{user `project_id`}}",
+            "image_name": "reddit-full-{{timestamp}}",
+            "image_family": "{{user `image_family`}}",
+            "source_image_family": "{{user `source_image_family`}}",
+            "zone": "europe-west1-b",
+            "disk_size": "{{user `disk_size`}}",
+            "disk_type": "{{user `disk_type`}}",
+            "image_description": "{{user `image_description`}}",
+            "network": "{{user `network`}}",
+            "tags": "{{user `tags`}}",
+            "ssh_username": "appuser",
+            "machine_type": "{{user `machine_type`}}"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "script": "scripts/install_ruby.sh",
+            "execute_command": "sudo {{.Path}}"
+	},
+        {
+            "type": "shell",
+            "script": "scripts/install_mongodb.sh",
+            "execute_command": "sudo {{.Path}}"
+        },
+        {
+            "type": "shell",
+            "script": "scripts/install_puma.sh",
+            "execute_command": "sudo {{.Path}}"
+         },
+         {
+            "type": "file",
+            "source": "scripts/puma.service",
+            "destination": "/tmp/puma.service"
+         },
+         {
+            "inline": [
+              "sudo cp /tmp/puma.service /etc/systemd/system/puma.service",
+              "sudo chmod a+x /etc/systemd/system/puma.service",
+              "sudo systemctl daemon-reload",
+              "sudo systemctl enable puma.service",
+              "sudo systemctl start puma.service"
+            ],
+            "type": "shell"
+         }
+     ]        
+
+}
