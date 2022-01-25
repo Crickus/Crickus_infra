@@ -1,0 +1,22 @@
+plugin: gcp_compute
+projects:
+  - testvm-339115
+zones:
+  - "europe-west1-b"
+filters: []
+auth_kind: serviceaccount
+service_account_file: "~/gcpkeys/appuser-private.json"
+# keyed_groups:
+#   - prefix: ""
+#     separator: ""
+#     key: labels.ansible_group
+hostnames:
+  # List hosts by name instead of the default public ip
+  - name
+groups:
+  app: "'app' in name"
+  db: "'db' in name"
+compose:
+  # Set an inventory parameter to use the Public IP address to connect to the host
+  # For Private ip use "networkInterfaces[0].networkIP"
+  ansible_host: networkInterfaces[0].accessConfigs[0].natIP
