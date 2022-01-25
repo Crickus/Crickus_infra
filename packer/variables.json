@@ -1,5 +1,5 @@
 {
-            "project_id": "infra-333609",
+            "project_id": "testvm-339115",
             "source_image_family": "ubuntu-1804-lts",
             "image_family": "reddit-full",
             "machine_type": "f1-micro",

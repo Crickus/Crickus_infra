@@ -1,4 +1,4 @@
-output "db_external_ip2" {
+output "db_pip" {
   value = "${google_compute_instance.db.network_interface.0.access_config.0.nat_ip}"
 }
 
