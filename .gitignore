@@ -6,3 +6,10 @@
 *.retry
 ~/gcpkeys/appuser-private.json
 jdauphant.nginx
+.vagrant/
+.vagrant.d/
+*.log
+*.pyc
+.molecule
+.cache
+.pytest_cache
